@@ -3,7 +3,7 @@ const number = document.querySelector('input');
 const form = document.querySelector('form');
 const ul = document.querySelector('.list-group');
 form.addEventListener('submit', (e) => {
-  fetch(`http://localhost:3000/jokes?number=${number.value}`).then((response) => {
+  fetch(`/jokes?number=${number.value}`).then((response) => {
     response.json().then((data) => {
       if(data.Error){
         ul.innerHTML = '';

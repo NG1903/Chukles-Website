@@ -6,12 +6,13 @@ const apicode = require('./utils/apicode');
 const pathViews = path.join(__dirname, '../templates/views');
 const pathPartials = path.join(__dirname, '../templates/partials');
 const pathStatic = path.join(__dirname, '../public');
+const PORT = process.env.PORT || 3000;
 
 const app = express();
+hbs.registerPartials(pathPartials);
 
 app.set('view engine', 'hbs');
 app.set('views', pathViews);
-hbs.registerPartials(pathPartials);
 
 app.use(express.static(pathStatic));
 
@@ -49,6 +50,6 @@ app.get('/*', (req,res) => {
   res.send('<h1 style = "text-align: center">ERROR 404, CANNOT ACCESS UNDEFINED</h1>')
 })
 
-app.listen(3000, () => {
-  console.log(`Listening to Port 3000`);
+app.listen(PORT, () => {
+  console.log(`Listening to Port ${PORT}`);
 });
